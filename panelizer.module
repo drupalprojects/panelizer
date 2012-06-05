@@ -1009,6 +1009,7 @@ function panelizer_action_info() {
       'label' => t('Set panelizer status'),
       'vbo_configurable' => TRUE,
       'behavior' => array('changes_property'),
+      'configurable' => TRUE,
     )
   );
 }
