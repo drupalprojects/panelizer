@@ -1306,6 +1306,7 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
    * we have none and want something to get started.
    */
   public function get_internal_default_panelizer($bundle) {
+    ctools_include('export');
     $load_name = implode(':', array($this->entity_type, $bundle, 'default'));
     $panelizer = ctools_export_crud_new('panelizer_defaults');
     $panelizer->panelizer_type = $this->entity_type;
