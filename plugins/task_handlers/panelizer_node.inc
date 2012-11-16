@@ -238,7 +238,9 @@ function panelizer_panelizer_task_render($handler, $base_contexts, $args, $test 
   $address = implode('::', array('page_manager', $handler->task, $handler->subtask, $handler->name, implode('..', $args)));
 
   if ($entity_handler = panelizer_entity_plugin_get_handler($entity_type)) {
-    return $entity_handler->render_entity($context->data, $args, $address);
+    $info = $entity_handler->render_entity($context->data, $args, $address);
+    $info['title'] = $panelizer->display->get_title();
+    return $info;
   }
 }
 

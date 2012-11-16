@@ -401,7 +401,7 @@ function panelizer_edit_content_form($form, &$form_state) {
 
   $form_state['display'] = &$cache->display;
   $form_state['content_types'] = $cache->content_types;
-  $form_state['display_title'] = !empty($cache->display_title);
+  $form_state['display_title'] = TRUE;
 
   $form = panels_edit_display_form($form, $form_state);
 
