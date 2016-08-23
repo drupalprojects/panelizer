@@ -39,7 +39,7 @@ function panelizer_permission() {
   $items = array(
     'administer panelizer' => array(
       'title' => t('administer panelizer'),
-      'description' => t('Fully administer panelizer and all panelizer settings.'),
+      'description' => t('Fully administer Panelizer - customize which entities can be managed with Panelizer, manage their default displays, etc.'),
     ),
   );
 
