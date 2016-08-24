@@ -2,6 +2,8 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
 ---------------------------------
 #2788851 by dsnopek, DamienMcKenna: Don't require the entity permissions to
   customize an entity's default displays.
+#2788633 by sylus: Fixes to panelizer_update_7120() and panelizer_update_7300()
+  to make them more robust and fix compatibility problems with PostgreSQL.
 
 
 Panelizer 7.x-3.4, 2016-08-19

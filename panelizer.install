@@ -1079,7 +1079,7 @@ function panelizer_update_7120(&$sandbox) {
               $new_pane = clone $pane;
 
               // Erase the pid so a new record can be saved.
-              $new_pane->pid = NULL;
+              unset($new_pane->pid);
 
               // Tie the pane to this display.
               $new_pane->did = $display->did;
@@ -1195,12 +1195,17 @@ function panelizer_update_7300(&$sandbox) {
     }
 
     // Delete panelizer records that have one of the default names.
-    $deleted = db_delete('panelizer_entity')
-      ->condition('name', $default_names, 'IN')
-      ->condition('entity_type', $entity_type)
-      ->execute();
-    if ($deleted > 0) {
-      watchdog('panelizer', '@count default panelizer records were removed for entity type: @entity_type.', array('@count' => $deleted, '@entity_type' => $entity_type));
+    if (!empty($default_names)) {
+      $deleted = db_delete('panelizer_entity')
+        ->condition('name', $default_names, 'IN')
+        ->condition('entity_type', $entity_type)
+        ->execute();
+      if ($deleted > 0) {
+        watchdog('panelizer', '@count default panelizer records were removed for entity type: @entity_type.', array('@count' => $deleted, '@entity_type' => $entity_type));
+      }
+      else {
+        watchdog('panelizer', 'No default panelizer records were found for entity type: @entity_type.', array('@entity_type' => $entity_type));
+      }
     }
     else {
       watchdog('panelizer', 'No default panelizer records were found for entity type: @entity_type.', array('@entity_type' => $entity_type));
