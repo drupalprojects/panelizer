@@ -1278,6 +1278,9 @@ function panelizer_panels_cache_get($argument) {
     return;
   }
 
+  $entity_info = entity_get_info($entity_type);
+  $revision_key = isset($entity_info['entity keys']['revision']) ? $entity_info['entity keys']['revision'] : 'vid';
+
   // Extract the entity ID and view mode.
   list($entity_id, $view_mode) = explode(':', $key, 2);
   // If this entity supports revisions, and a custom revision is being
@@ -1302,7 +1305,7 @@ function panelizer_panels_cache_get($argument) {
       }
     }
     else {
-      $conditions = (isset($vid) ? array('vid' => $vid) : array());
+      $conditions = (isset($vid) ? array($revision_key => $vid) : array());
       $entities = entity_load($entity_type, array($entity_id), $conditions);
       if (!empty($entities[$entity_id]) && !empty($entities[$entity_id]->panelizer[$view_mode])) {
         $panelizer = $entities[$entity_id]->panelizer[$view_mode];
@@ -1330,7 +1333,7 @@ function panelizer_panels_cache_get($argument) {
      }
   }
   else {
-    $conditions = (isset($vid) ? array('vid' => $vid) : array());
+    $conditions = (isset($vid) ? array($revision_key => $vid) : array());
     $entities = entity_load($entity_type, array($entity_id), $conditions);
     if (empty($entities[$entity_id]) || empty($entities[$entity_id]->panelizer[$view_mode])) {
       return $cache;
