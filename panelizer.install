@@ -818,6 +818,7 @@ function panelizer_update_7115(&$sandbox) {
               'extras' => serialize($new_pane->extras),
               'locks' => serialize($new_pane->locks),
               'uuid' => $new_pane->uuid,
+              'position' => $new_pane->position,
             ))
             ->execute();
 
