@@ -499,21 +499,24 @@ function panelizer_update_7105() {
     'length' => '128',
     'description' => 'Contains the view mode this panelizer is for.',
     'not null' => TRUE,
+    'default' => 'page_manager',
   );
-  db_add_field('panelizer_defaults', 'view_mode', $spec);
-  db_add_field('panelizer_entity', 'view_mode', $spec);
 
-  db_update('panelizer_defaults')
-    ->fields(array(
-      'view_mode' => 'page_manager',
-    ))
-    ->execute();
+  // Update both of the Panelizer tables.
+  foreach (array('panelizer_defaults', 'panelizer_entity') as $table) {
+    if (db_field_exists($table, 'view_mode')) {
+      // Providing a code path for sites that errored out when running a
+      // previous version of this update hook.
+      db_change_field($table, 'view_mode', 'view_mode', $spec);
+    }
+    else {
+      db_add_field($table, 'view_mode', $spec);
+    }
 
-  db_update('panelizer_entity')
-    ->fields(array(
-      'view_mode' => 'page_manager',
-    ))
-    ->execute();
+    // Remove the default value; default was set only to allow tables with
+    // existing data to run this update nicely.
+    db_field_set_no_default($table, 'view_mode');
+  }
 }
 
 /**
