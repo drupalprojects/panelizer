@@ -8,6 +8,7 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
 #2796175 by azinck: Workaround for adding the view_mode column to the Panelizer
   tables when there are already records present.
 #2795735 by azinck: Missing {panels_pane}.position value in update 7115.
+#2785945 by DamienMcKenna, awroblewski, gilgabar, easp: Fixes to update 7302.
 
 
 Panelizer 7.x-3.4, 2016-08-19
