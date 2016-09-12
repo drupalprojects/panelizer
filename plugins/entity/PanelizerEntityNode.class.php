@@ -183,6 +183,15 @@ class PanelizerEntityNode extends PanelizerEntityDefault {
     }
   }
 
+  /**
+   * Implements a delegated hook_admin_paths.
+   */
+  public function hook_admin_paths(&$items) {
+    if (variable_get('node_admin_theme')) {
+      $items['node/*/panelizer*'] = TRUE;
+    }
+  }
+
   public function preprocess_panelizer_view_mode(&$vars, $entity, $element, $panelizer, $info) {
     parent::preprocess_panelizer_view_mode($vars, $entity, $element, $panelizer, $info);
 

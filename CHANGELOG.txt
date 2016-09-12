@@ -14,8 +14,8 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
   requested bundle.
 #2635862 by mrmikedewolf: Cloning a Panelizer record should always result in an
   object, not an array.
-#2627618 by drumm, DamienMcKenna: Override hook_admin_paths() for nodes.
-#2627618 by DamienMcKenna: Reverted the changes.
+#2627618 by DamienMcKenna, drumm: Override hook_admin_paths() for nodes so that
+  it adheres to the node_admin_theme setting.
 
 
 Panelizer 7.x-3.4, 2016-08-19
