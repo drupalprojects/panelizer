@@ -12,6 +12,8 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
 #2776173 by david.hughes, ron_s: If no view modes exist for an entity, make sure
   a data structure is still created in get_available_view_modes() for the
   requested bundle.
+#2635862 by mrmikedewolf: Cloning a Panelizer record should always result in an
+  object, not an array.
 
 
 Panelizer 7.x-3.4, 2016-08-19

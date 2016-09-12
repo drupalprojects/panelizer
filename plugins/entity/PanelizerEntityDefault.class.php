@@ -2029,6 +2029,12 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
    * Create a new, scrubbed version of a panelizer object.
    */
   public function clone_panelizer($panelizer, $entity) {
+    // When services tries to send nodes via JSON, the $panelizer here gets
+    // accidentally cast as an array. By casting it back as an object here we
+    // can code defensively and pre-empt any fatal errors below when calling
+    // clone.
+    $panelizer = (object) $panelizer;
+    $panelizer->display = (object) $panelizer->display;
     list($entity_id, $revision_id, $bundle) = entity_extract_ids($this->entity_type, $entity);
     $panelizer_clone = clone $panelizer;
 
