@@ -34,6 +34,7 @@ class PanelizerNodeTest extends PanelizerTestHelper {
       'administer panelizer',
       'administer page manager',
       'use page manager',
+      'view the administration theme',
     );
     $web_user = $this->drupalCreateUser($perms);
     $this->drupalLogin($web_user);
@@ -83,11 +84,20 @@ class PanelizerNodeTest extends PanelizerTestHelper {
       $this->assertText(t('No default display has been configured for this view mode.'));
     }
 
+    // Confirm the node page is not using the admin theme.
+    $this->drupalGet('node/' . $node->nid);
+    $this->assertResponse(200);
+    $this->assertNoRaw('themes/seven/style.css', 'The node page is not using the admin theme.');
+
     // Check that the view mode can be panelized.
     $this->drupalGet('node/' . $node->nid . '/panelizer');
+    $this->assertResponse(200);
     $this->assertText('Default');
     $this->assertLink('panelize', 0, 'The panelize link for the view mode appears on the page');
     $this->assertLinkByHref('node/' . $node->nid . '/panelizer/' . $view_mode, 0, 'A link to panelize the view mode appears on the page');
+
+    // Confirm the Panelizer pages are being used.
+    $this->assertRaw('themes/seven/style.css', 'The node Panelizer page is using the admin theme.');
 
     // Verify that the view mode is not currently panelized.
     $this->drupalGet('node/' . $node->nid . '/panelizer/' . $view_mode);
