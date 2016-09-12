@@ -9,6 +9,9 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
   tables when there are already records present.
 #2795735 by azinck: Missing {panels_pane}.position value in update 7115.
 #2785945 by DamienMcKenna, awroblewski, gilgabar, easp: Fixes to update 7302.
+#2776173 by david.hughes, ron_s: If no view modes exist for an entity, make sure
+  a data structure is still created in get_available_view_modes() for the
+  requested bundle.
 
 
 Panelizer 7.x-3.4, 2016-08-19

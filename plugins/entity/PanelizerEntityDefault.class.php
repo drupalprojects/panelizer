@@ -752,6 +752,12 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
         }
         $this->enabled_view_modes[$bundle][$view_mode] = $view_mode_info['label'];
       }
+
+      // If no enabled view modes were found, set an empty entry so future
+      // calls of this function can be skipped.
+      if (!isset($this->enabled_view_modes[$bundle])) {
+        $this->enabled_view_modes[$bundle] = array();
+      }
     }
 
     return $this->enabled_view_modes[$bundle];
