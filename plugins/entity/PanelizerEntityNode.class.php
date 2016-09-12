@@ -183,6 +183,16 @@ class PanelizerEntityNode extends PanelizerEntityDefault {
     }
   }
 
+  /**
+   * Implements a delegated hook_admin_paths.
+   *
+   * Need to avoid collisions on node/%node/panelizer paths for the Project
+   * module as used on drupal.org.
+   */
+  public function hook_admin_paths(&$items) {
+    $items['node/[0-9]+/panelizer*'] = TRUE;
+  }
+
   public function preprocess_panelizer_view_mode(&$vars, $entity, $element, $panelizer, $info) {
     parent::preprocess_panelizer_view_mode($vars, $entity, $element, $panelizer, $info);
 
