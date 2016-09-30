@@ -16,6 +16,8 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
   object, not an array.
 #2627618 by DamienMcKenna, drumm: Override hook_admin_paths() for nodes so that
   it adheres to the node_admin_theme setting.
+#2124517 by DamienMcKenna: Update the entity configuration variables when
+  updating from Panelizer 2.x to 3.x.
 
 
 Panelizer 7.x-3.4, 2016-08-19

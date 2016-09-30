@@ -1362,3 +1362,52 @@ function panelizer_update_7303(&$sandbox) {
 function panelizer_update_7304(&$sandbox) {
   return panelizer_update_7302($sandbox);
 }
+
+/**
+ * Fix the default config variables from 7.x-2.x.
+ */
+function panelizer_update_7305() {
+  foreach (entity_get_info() as $entity_type => $entity_info) {
+    if (isset($entity_info['bundles'])) {
+      foreach ($entity_info['bundles'] as $bundle_name => $bundle_info) {
+        // Check to see if this entity bundle was configured for use in
+        // Panelizer.
+        $var_name = "panelizer_defaults_{$entity_type}_{$bundle_name}";
+        $config = variable_get($var_name);
+        if (!empty($config)) {
+          // In 7.x-2.x the structure was:
+          // $config = array(
+          //   'status' => 0,
+          //   'default' => 0,
+          //   'choice' => 0,
+          // );
+          // In 7.x-3.x the structure is:
+          // $config = array(
+          //   'view modes' => array(
+          //     'page_manager' => array(
+          //       'status' => 0,
+          //       'default' => 0,
+          //       'choice' => 0,
+          //     ),
+          //   ),
+          // );
+          if (isset($config['status']) && !isset($config['view modes'])) {
+            $new_config = array(
+              'status' => !empty($config['status']),
+              'help' => '',
+              'view modes' => array(
+                'page_manager' => array(
+                  'status' => !empty($config['status']),
+                  'default' => !empty($config['default']),
+                  'choice' => !empty($config['choice']),
+                ),
+              ),
+            );
+            variable_set($var_name, $new_config);
+            drupal_set_message("Fixed the config for @entity, @bundle.", array('@entity' => $entity_type, '@bundle' => $bundle_name));
+          }
+        }
+      }
+    }
+  }
+}
