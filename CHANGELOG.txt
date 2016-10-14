@@ -18,6 +18,9 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
   it adheres to the node_admin_theme setting.
 #2124517 by DamienMcKenna: Update the entity configuration variables when
   updating from Panelizer 2.x to 3.x.
+#2812807 by lucas.constantino, DamienMcKenna: Expand hook_panelizer_access() and
+  hook_panelizer_access_alter() to also pass in the entity that is being
+  examined.
 
 
 Panelizer 7.x-3.4, 2016-08-19

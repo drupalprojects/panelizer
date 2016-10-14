@@ -2078,6 +2078,8 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
    */
   function panelizer_access($op, $bundle, $view_mode) {
     $og_access = FALSE;
+    $entity = NULL;
+
     if (is_object($bundle)) {
       $entity = $bundle;
       list($entity_id, $revision_id, $bundle) = entity_extract_ids($this->entity_type, $entity);
@@ -2109,18 +2111,19 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
     }
 
     // Invoke hook_panelizer_access().
-    $panelizer_access = module_invoke_all('panelizer_access', $op, $this->entity_type, $bundle, $view_mode);
+    $panelizer_access = module_invoke_all('panelizer_access', $op, $this->entity_type, $bundle, $view_mode, $entity);
     array_unshift($panelizer_access, user_access('administer panelizer'), user_access("administer panelizer {$this->entity_type} {$bundle} {$op}"));
     $panelizer_access[] = $og_access;
 
-    // Trigger hook_panelizer_access_alter().
+    // Invoke hook_panelizer_access_alter().
     // We can't pass this many parameters to drupal_alter, so stuff them into
     // an array.
     $options = array(
       'op' => $op,
       'entity_type' => $this->entity_type,
       'bundle' => $bundle,
-      'view_mode' => $view_mode
+      'view_mode' => $view_mode,
+      'entity' => $entity,
     );
     drupal_alter('panelizer_access', $panelizer_access, $options);
 

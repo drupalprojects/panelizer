@@ -86,11 +86,13 @@ function hook_panelizer_delete_default($panelizer) {
  *   depending upon how it is called.
  * @param string $view_mode
  *   The view mode of the entity related to this operation.
+ * @param object $entity
+ *   The entity that access is being checked for.
  *
  * @return bool
  *   Whether or not the user has permission to perform this $op.
  */
-function hook_panelizer_access($op, $entity_type, $bundle, $view_mode) {
+function hook_panelizer_access($op, $entity_type, $bundle, $view_mode, $entity) {
 }
 
 /**
@@ -103,10 +105,11 @@ function hook_panelizer_access($op, $entity_type, $bundle, $view_mode) {
  *   drupal_alter() can only handle so many parameters. In order to pass the
  *   same parameters that are passed in hook_panelizer_access, the params are
  *   placed into an $options array. Expected keys are:
- *     op
- *     entity_type
- *     bundle
- *     view_mode
+ *   - op
+ *   - entity_type
+ *   - bundle
+ *   - view_mode
+ *   - entity
  */
 function hook_panelizer_access_alter(&$panelizer_access, $options) {
 }
