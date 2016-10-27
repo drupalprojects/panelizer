@@ -1404,7 +1404,7 @@ function panelizer_update_7305() {
               ),
             );
             variable_set($var_name, $new_config);
-            drupal_set_message("Fixed the config for @entity, @bundle.", array('@entity' => $entity_type, '@bundle' => $bundle_name));
+            drupal_set_message(t('Fixed the config for @entity, @bundle.', array('@entity' => $entity_type, '@bundle' => $bundle_name)));
           }
         }
       }
