@@ -2241,7 +2241,11 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
     if ($this->supports_revisions) {
       $current_entities = entity_load($this->entity_type, array($entity_id));
       $current_entity = array_pop($current_entities);
-      if ($revision_id !== $current_entity->vid) {
+
+      // Ensure the correct revision key is used, as not all entities use 'vid'.
+      $entity_info = entity_get_info($this->entity_type);
+      $revision_key = isset($entity_info['entity keys']['revision']) ? $entity_info['entity keys']['revision'] : 'vid';
+      if ($revision_id !== $current_entity->{$revision_key}) {
         $path_elements[] = $revision_id;
         $path .= '/revisions/%';
       }
