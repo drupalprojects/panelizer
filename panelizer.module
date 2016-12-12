@@ -170,15 +170,28 @@ function panelizer_panels_ipe_access($display) {
   if (isset($display->context['panelizer'])) {
     // The type array contains 3 elements, where the first is the full context
     // type (ie. 'entity:ENTITY_TYPE'), and the remaining two are the parts
-    // seperated by ':', so 'entity' and the entity type name.
+    // separated by ':', so 'entity' and the entity type name.
     $entity_type = $display->context['panelizer']->type[2];
     if ($handler = panelizer_entity_plugin_get_handler($entity_type)) {
-      // Only allow access to use the IPE if the user has 'update' access to
+      // Deny access to the IPE if the user doesn't have 'update' access to
       // the underlying entity.
       $entity = $display->context['panelizer']->data;
-      return $handler->entity_access('update', $entity);
+      if (!$handler->entity_access('update', $entity)) {
+        return FALSE;
+      }
+      // Also deny access to the IPE if the user doesn't have either the
+      // Administer Panelizer content or Administer Panelizer layout permission
+      // for this bundle.
+      if (!empty($entity->panelizer_view_mode)) {
+        $view_mode = $entity->panelizer_view_mode;
+        if (!$handler->panelizer_access("layout", $entity, $view_mode) || !$handler->panelizer_access("content", $entity, $view_mode)) {
+          return FALSE;
+        }
+      }
     }
+    return TRUE;
   }
+  return NULL;
 }
 
 /**
