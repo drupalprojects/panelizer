@@ -34,46 +34,6 @@ function panelizer_theme() {
 }
 
 /**
- * Preprocess function for panelizer-wizard-tree.html.twig.
- */
-function template_preprocess_panelizer_wizard_tree(&$variables) {
-  /** @var $wizard \Drupal\ctools\Wizard\FormWizardInterface|\Drupal\ctools\Wizard\EntityFormWizardInterface */
-  $wizard = $variables['wizard'];
-  $cached_values = $variables['cached_values'];
-  $tree = $variables['tree'];
-  $variables['step'] = $wizard->getStep($cached_values);
-
-  foreach ($wizard->getOperations($cached_values) as $step => $operation) {
-    $parameters = $wizard->getNextParameters($cached_values);
-    // Override step to be the step we want.
-    $parameters['step'] = $step;
-
-    // Fill in parents if there are breadcrumbs.
-    $parent =& $tree;
-    if (isset($operation['breadcrumbs'])) {
-      foreach ($operation['breadcrumbs'] as $breadcrumb) {
-        $breadcrumb_string = (string) $breadcrumb;
-        if (!isset($parent[$breadcrumb_string])) {
-          $parent[$breadcrumb_string] = [
-            'title' => $breadcrumb,
-            'children' => [],
-          ];
-        }
-        $parent =& $parent[$breadcrumb_string]['children'];
-      }
-    }
-
-    $parent[$step] = [
-      'title' => !empty($operation['title']) ? $operation['title'] : '',
-      'url' => new Url($wizard->getRouteName(), $parameters),
-      'step' => $step,
-    ];
-  }
-
-  $variables['tree'] = $tree;
-}
-
-/**
  * Implements hook_entity_type_alter().
  */
 function panelizer_entity_type_alter(array &$entity_types) {
@@ -371,9 +331,49 @@ function panelizer_form_field_ui_field_storage_add_form_alter(&$form, FormStateI
 }
 
 /**
- * Prepares variables for Panelizer view mode templates.
+ * Preprocess function for panelizer-wizard-tree.html.twig.
+ */
+function template_preprocess_panelizer_wizard_tree(&$variables) {
+  /** @var $wizard \Drupal\ctools\Wizard\FormWizardInterface|\Drupal\ctools\Wizard\EntityFormWizardInterface */
+  $wizard = $variables['wizard'];
+  $cached_values = $variables['cached_values'];
+  $tree = $variables['tree'];
+  $variables['step'] = $wizard->getStep($cached_values);
+
+  foreach ($wizard->getOperations($cached_values) as $step => $operation) {
+    $parameters = $wizard->getNextParameters($cached_values);
+    // Override step to be the step we want.
+    $parameters['step'] = $step;
+
+    // Fill in parents if there are breadcrumbs.
+    $parent =& $tree;
+    if (isset($operation['breadcrumbs'])) {
+      foreach ($operation['breadcrumbs'] as $breadcrumb) {
+        $breadcrumb_string = (string) $breadcrumb;
+        if (!isset($parent[$breadcrumb_string])) {
+          $parent[$breadcrumb_string] = [
+            'title' => $breadcrumb,
+            'children' => [],
+          ];
+        }
+        $parent =& $parent[$breadcrumb_string]['children'];
+      }
+    }
+
+    $parent[$step] = [
+      'title' => !empty($operation['title']) ? $operation['title'] : '',
+      'url' => new Url($wizard->getRouteName(), $parameters),
+      'step' => $step,
+    ];
+  }
+
+  $variables['tree'] = $tree;
+}
+
+/**
+ * Preprocess function for panelizer-view-mode.html.twig
  *
- * Default template: panelizer-view-mode.html.twig
+ * Prepare variables for Panelizer view mode templates.
  */
 function template_preprocess_panelizer_view_mode(&$variables) {
   $element = $variables['element'];
