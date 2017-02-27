@@ -24,6 +24,8 @@ Panelizer 7.x-3.x-dev, xxxx-xx-xx
 By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
 #2828550 by a.milkovsky: Not all entities use 'vid' as the revision key.
 #2823912 by cboyden: Fixed IPE permissions.
+#2852739 by DamienMcKenna: Added files for controlling the codeclimate testing
+  system.
 
 
 Panelizer 7.x-3.4, 2016-08-19
