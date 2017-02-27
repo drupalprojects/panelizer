@@ -2,6 +2,8 @@ Panelizer 8.x-3.x-dev, xxxx-xx-xx
 ---------------------------------
 #2850246 by DamienMcKenna: Added a new permission to control who has access to
   the 'reset to default' option, added some tests for IPE functionality.
+#2852739 by DamienMcKenna: Added files for controlling the codeclimate testing
+  system.
 
 
 Panelizer 8.x-3.0-beta1, 2017-02-04
