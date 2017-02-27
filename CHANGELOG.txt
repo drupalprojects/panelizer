@@ -4,6 +4,8 @@ Panelizer 8.x-3.x-dev, xxxx-xx-xx
   the 'reset to default' option, added some tests for IPE functionality.
 #2852739 by DamienMcKenna: Added files for controlling the codeclimate testing
   system.
+#2854655 by DamienMcKenna: Added a custom composer.json file to clearly define
+  the dependencies.
 
 
 Panelizer 8.x-3.0-beta1, 2017-02-04
