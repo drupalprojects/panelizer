@@ -24,6 +24,12 @@ class PanelizerIpeTest extends WebTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
+    // Dependencies.
+    'ctools',
+    'layout_discovery',
+    'panels',
+    'panels_ipe',
+    // This module.
     'panelizer',
   ];
 

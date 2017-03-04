@@ -21,15 +21,15 @@ class PanelizerTermFunctionalTest extends WebTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
-    'block',
+    // Dependencies.
     'ctools',
     'ctools_block',
-    'layout_plugin',
-    'taxonomy',
-    'panelizer',
-    'panelizer_test',
+    'layout_discovery',
     'panels',
     'panels_ipe',
+    // This module.
+    'panelizer',
+    'panelizer_test',
   ];
 
   /**
@@ -70,7 +70,7 @@ class PanelizerTermFunctionalTest extends WebTestBase {
       'id' => 'panelizer_test',
       'label' => 'Panelizer test',
       'provider' => 'block_content',
-      'region' => 'middle',
+      'region' => 'content',
     ]);
     $panelizer->setDefaultPanelsDisplay('default', 'taxonomy_term', 'tags', 'default', $display);
 

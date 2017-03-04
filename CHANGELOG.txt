@@ -1,3 +1,9 @@
+Panelizer 8.x-4.x-dev, xxxx-xx-xx
+---------------------------------
+#2856102 by japerry, DamienMcKenna, tim.plunkett, Mixologic: Updated to work
+  with Panels 8.x-4.x and Drupal core 8.3.x.
+
+
 Panelizer 8.x-3.x-dev, xxxx-xx-xx
 ---------------------------------
 #2850246 by DamienMcKenna: Added a new permission to control who has access to

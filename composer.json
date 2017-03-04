@@ -37,8 +37,7 @@
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "require": {
-    "drupal/ctools": ">=3.0.0-alpha27",
-    "drupal/layout_plugin": ">=1.0.0-alpha23",
-    "drupal/panels": ">=3.0.0-beta6"
+    "drupal/ctools": "3.x-dev",
+    "drupal/panels": "4.x-dev"
   }
 }

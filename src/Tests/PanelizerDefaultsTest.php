@@ -23,12 +23,12 @@ class PanelizerDefaultsTest extends WebTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
-    'block',
+    // Dependencies.
     'ctools',
-    'layout_plugin',
-    'node',
-    'panelizer',
+    'layout_discovery',
     'panels',
+    // This module.
+    'panelizer',
   ];
 
   /**

@@ -22,15 +22,15 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
    * {@inheritdoc}
    */
   public static $modules = [
-    'block',
+    // Dependencies.
     'ctools',
     'ctools_block',
-    'layout_plugin',
-    'node',
-    'panelizer',
-    'panelizer_test',
+    'layout_discovery',
     'panels',
     'panels_ipe',
+    // This module.
+    'panelizer',
+    'panelizer_test',
   ];
 
   /**
@@ -79,7 +79,7 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
     $this->clickLink('Add new block');
     $this->clickLink('Title');
     $edit = [
-      'region' => 'middle',
+      'region' => 'content',
     ];
     $this->drupalPostForm(NULL, $edit, t('Add block'));
     $this->assertResponse(200);
@@ -113,7 +113,7 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
     $this->clickLink('Add new block');
     $this->clickLink('Body');
     $edit = [
-      'region' => 'middle',
+      'region' => 'content',
     ];
     $this->drupalPostForm(NULL, $edit, t('Add block'));
     $this->assertResponse(200);
@@ -138,7 +138,7 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
   /**
    * Tests rendering a node with Panelizer default.
    */
-  public function _testPanelizerDefault() {
+  public function testPanelizerDefault() {
     $this->panelize('page', NULL, ['panelizer[custom]' => TRUE]);
     /** @var \Drupal\panelizer\PanelizerInterface $panelizer */
     $panelizer = $this->container->get('panelizer');
@@ -148,7 +148,7 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
       'id' => 'panelizer_test',
       'label' => 'Panelizer test',
       'provider' => 'block_content',
-      'region' => 'middle',
+      'region' => 'content',
     ]);
     $panelizer->setDefaultPanelsDisplay('default', 'node', 'page', 'default', $display);
 
