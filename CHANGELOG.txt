@@ -3,6 +3,8 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
 By DamienMcKenna: Tidied up the dependencies a little.
 By DamienMcKenna: Trying to solve composer dependencies in Panels by
   specifically requiring Panels IPE 4.x.
+#2858488 by tim.plunkett: Moved PanelizerIntegrationTest from Panels to
+  Panelizer.
 
 
 Panelizer 8.x-4.0-beta1, 2017-03-04
