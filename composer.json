@@ -38,6 +38,7 @@
   "minimum-stability": "dev",
   "require": {
     "drupal/ctools": "3.x-dev",
-    "drupal/panels": "4.x-dev"
+    "drupal/panels": "4.x-dev",
+    "drupal/panels_ipe": "4.x-dev"
   }
 }
