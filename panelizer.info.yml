@@ -5,9 +5,12 @@ package: Layout
 version: VERSION
 core: 8.x
 dependencies:
-  - panels
-  - ctools_block
-  # @todo: Break the dependency on Field UI
+  # Core.
+  # @todo Break the dependency on Field UI.
   - field_ui
-  # @todo: Allow editing without the IPE
-  - panels_ipe
+  # Contrib
+  - ctools:ctools_block
+  - layout_plugin:layout_plugin
+  - panels:panels
+  # @todo Allow editing without the IPE.
+  - panels:panels_ipe

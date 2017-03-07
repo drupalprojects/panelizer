@@ -7,6 +7,7 @@ Panelizer 8.x-3.x-dev, xxxx-xx-xx
 #2854655 by DamienMcKenna: Added a custom composer.json file to clearly define
   the dependencies.
 By DamienMcKenna: Grouped theme functions together in panelizer.module.
+By DamienMcKenna: Tidied up the dependencies a little.
 
 
 Panelizer 8.x-3.0-beta1, 2017-02-04
