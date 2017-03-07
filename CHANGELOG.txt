@@ -2,6 +2,7 @@ Panelizer 8.x-4.0-beta1, 2017-03-04
 -----------------------------------
 #2856102 by japerry, DamienMcKenna, tim.plunkett, Mixologic: Updated to work
   with Panels 8.x-4.x and Drupal core 8.3.x.
+By DamienMcKenna: Tidied up the dependencies a little.
 
 
 Panelizer 8.x-3.x-dev, xxxx-xx-xx
