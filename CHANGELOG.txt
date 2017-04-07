@@ -1,5 +1,10 @@
 Panelizer 8.x-4.x-dev, xxxx-xx-xx
 ---------------------------------
+#2867568 by japerry: Update hook to fix layout machine names.
+#2866705 by japerry: Add handling for revision support when saving custom
+  panelizer layouts.
+#2856471 by phenaproxima, samuel.mortenson, japerry: IPE on Panelizer nodes
+  should only allow for custom overrides.
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04
