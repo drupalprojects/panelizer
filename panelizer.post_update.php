@@ -11,7 +11,8 @@
  */
 
 /**
- * Rename layout machine names in config entities to match layout discovery's default layouts.
+ * Rename layout machine names in config entities to match layout discovery's
+ * default layouts.
  */
 function panelizer_post_update_rename_layout_machine_names(&$sandbox) {
   module_load_install('panels');
@@ -65,9 +66,9 @@ function panelizer_post_update_rename_layout_machine_names(&$sandbox) {
   }
 
   // Process entities by groups of 20.
-  // When a group is processed, the batch update engine determines
-  // whether it should continue processing in the same request or provide
-  // progress feedback to the user and wait for the next request.
+  // When a group is processed, the batch update engine determines whether it
+  // should continue processing in the same request or provide progress
+  // feedback to the user and wait for the next request.
   $limit = 5;
   $result = array_slice($results, $sandbox['current'], $limit);
 
