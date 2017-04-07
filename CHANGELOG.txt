@@ -1,5 +1,5 @@
-Panelizer 8.x-3.x-dev, xxxx-xx-xx
----------------------------------
+Panelizer 8.x-3.0-beta2, 2017-04-07
+-----------------------------------
 #2850246 by DamienMcKenna: Added a new permission to control who has access to
   the 'reset to default' option, added some tests for IPE functionality.
 #2852739 by DamienMcKenna: Added files for controlling the codeclimate testing
