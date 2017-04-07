@@ -1,8 +1,9 @@
 <?php
 
-namespace Drupal\panelizer\Tests;
+namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\simpletest\WebTestBase;
+use Drupal\panelizer\Tests\PanelizerTestTrait;
+use Drupal\Tests\BrowserTestBase;
 use Drupal\user\Entity\User;
 
 /**
@@ -10,7 +11,7 @@ use Drupal\user\Entity\User;
  *
  * @group panelizer
  */
-class PanelizerDefaultsTest extends WebTestBase {
+class PanelizerDefaultsTest extends BrowserTestBase {
 
   use PanelizerTestTrait;
 
@@ -39,7 +40,7 @@ class PanelizerDefaultsTest extends WebTestBase {
 
     $account = User::load(1);
     $account->setPassword('foo')->save();
-    $account->pass_raw = 'foo';
+    $account->passRaw = 'foo';
     $this->drupalLogin($account);
   }
 

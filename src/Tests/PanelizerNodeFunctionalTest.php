@@ -1,15 +1,16 @@
 <?php
 
-namespace Drupal\panelizer\Tests;
+namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\simpletest\WebTestBase;
+use Drupal\panelizer\Tests\PanelizerTestTrait;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Basic functional tests of using Panelizer with nodes.
  *
  * @group panelizer
  */
-class PanelizerNodeFunctionalTest extends WebTestBase {
+class PanelizerNodeFunctionalTest extends BrowserTestBase {
 
   use PanelizerTestTrait;
 
@@ -72,7 +73,7 @@ class PanelizerNodeFunctionalTest extends WebTestBase {
 
     // Layout selection step.
     $this->clickLink('Layout');
-    $this->assertField('edit-update-layout');
+    $this->assertSession()->buttonExists('edit-update-layout');
 
     // Content step. Add the Node block to the top region.
     $this->clickLink('Content');
