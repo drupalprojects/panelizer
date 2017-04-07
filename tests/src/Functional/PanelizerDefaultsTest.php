@@ -2,9 +2,7 @@
 
 namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\panelizer\Tests\PanelizerTestTrait;
 use Drupal\Tests\BrowserTestBase;
-use Drupal\user\Entity\User;
 
 /**
  * Confirm the defaults functionality works.
@@ -18,16 +16,22 @@ class PanelizerDefaultsTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $profile = 'standard';
-
-  /**
-   * {@inheritdoc}
-   */
   public static $modules = [
-    // Dependencies.
-    'ctools',
+    // Modules for core functionality.
+    'field',
+    'field_ui',
+    'help',
+    'node',
+    'user',
+
+    // Core dependencies.
     'layout_discovery',
+
+    // Contrib dependencies.
+    'ctools',
     'panels',
+    'panels_ipe',
+
     // This module.
     'panelizer',
   ];
@@ -38,18 +42,27 @@ class PanelizerDefaultsTest extends BrowserTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $account = User::load(1);
-    $account->setPassword('foo')->save();
-    $account->passRaw = 'foo';
-    $this->drupalLogin($account);
+    // Enable the Bartik theme and make it the default.
+    $theme = 'bartik';
+    \Drupal::service('theme_installer')->install([$theme]);
+    \Drupal::service('theme_handler')->setDefault($theme);
+
+    // Place the local actions block in the theme so that we can assert the
+    // presence of local actions and such.
+    $this->drupalPlaceBlock('local_actions_block', [
+      'region' => 'content',
+      'theme' => $theme,
+    ]);
   }
 
   public function test() {
-    $this->panelize('page');
+    $this->setupContentType();
+    $this->loginUser1();
 
     // Create an additional default layout so we can assert that it's available
     // as an option when choosing the layout on the node form.
-    $default_id = $this->addPanelizerDefault('page');
+    $default_id = $this->addPanelizerDefault();
+
     $this->assertDefaultExists('page', 'default', $default_id);
 
     // The user should only be able to choose the layout if specifically allowed

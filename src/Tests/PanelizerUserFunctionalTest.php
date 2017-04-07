@@ -1,32 +1,33 @@
 <?php
 
-namespace Drupal\panelizer\Tests;
+namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\simpletest\WebTestBase;
-use Drupal\user\Entity\User;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Basic functional tests of using Panelizer with user entities.
  *
  * @group panelizer
  */
-class PanelizerUserFunctionalTest extends WebTestBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $profile = 'standard';
+class PanelizerUserFunctionalTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
    */
   public static $modules = [
-    // Dependencies.
-    'ctools',
-    'ctools_block',
+    // Modules for core functionality.
+    'field',
+    'field_ui',
+    'user',
+
+    // Core dependencies.
     'layout_discovery',
+
+    // Contrib dependencies.
+    'ctools',
     'panels',
     'panels_ipe',
+
     // This module.
     'panelizer',
     'panelizer_test',

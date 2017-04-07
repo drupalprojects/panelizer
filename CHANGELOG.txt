@@ -5,6 +5,8 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
   panelizer layouts.
 #2856471 by phenaproxima, samuel.mortenson, japerry: IPE on Panelizer nodes
   should only allow for custom overrides.
+#2867503 by DamienMcKenna, phenaproxima: Change tests to not use the "standard"
+  installation profile, move PanelizerAddDefaultLinkTest to functional tests.
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04

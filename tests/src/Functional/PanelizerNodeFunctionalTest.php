@@ -2,7 +2,6 @@
 
 namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\panelizer\Tests\PanelizerTestTrait;
 use Drupal\Tests\BrowserTestBase;
 
 /**
@@ -17,19 +16,22 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected $profile = 'standard';
-
-  /**
-   * {@inheritdoc}
-   */
   public static $modules = [
-    // Dependencies.
-    'ctools',
-    'ctools_block',
+    // Modules for core functionality.
+    'node',
+    'field',
+    'field_ui',
+    'user',
+
+    // Core dependencies.
     'layout_discovery',
+
+    // Contrib dependencies.
+    'ctools',
     'panels',
     'panels_ipe',
-    // This module.
+
+    // This here module.
     'panelizer',
     'panelizer_test',
   ];
@@ -40,29 +42,17 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $user = $this->drupalCreateUser([
-      'administer node display',
-      'administer nodes',
-      'administer content types',
-      'create page content',
-      'create article content',
-      'administer panelizer',
-      'access panels in-place editing',
-      'view the administration theme',
-    ]);
-    $this->drupalLogin($user);
+    $this->setupContentType();
+    $this->loginUser1();
+    $this->panelize('page', NULL, ['panelizer[custom]' => TRUE]);
   }
 
   /**
    * Tests the admin interface to set a default layout for a bundle.
    */
   public function testWizardUI() {
-    $this->panelize('article', NULL, [
-      'panelizer[custom]' => TRUE,
-    ]);
-
     // Enter the wizard.
-    $this->drupalGet('admin/structure/panelizer/edit/node__article__default__default');
+    $this->drupalGet('admin/structure/panelizer/edit/node__page__default__default');
     $this->assertResponse(200);
     $this->assertText('Wizard Information');
     $this->assertField('edit-label');
@@ -99,7 +89,7 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
 
     // Confirm the page is back to the content type settings page.
     $this->assertFieldChecked('edit-panelizer-custom');
-    return;
+
     // Now change and save the general setting.
     $edit = [
       'panelizer[custom]' => FALSE,
@@ -109,7 +99,7 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
     $this->assertNoFieldChecked('edit-panelizer-custom');
 
     // Add another block at the Content step and then save changes.
-    $this->drupalGet('admin/structure/panelizer/edit/node__article__default__default/content');
+    $this->drupalGet('admin/structure/panelizer/edit/node__page__default__default/content');
     $this->assertResponse(200);
     $this->clickLink('Add new block');
     $this->clickLink('Body');
@@ -131,8 +121,8 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
     // Disable Panelizer for the default display mode. This should bring back
     // the field overview table at Manage Display and not display the link to
     // edit the default Panelizer layout.
-    $this->unpanelize('article');
-    $this->assertNoLinkByHref('admin/structure/panelizer/edit/node__article__default');
+    $this->unpanelize('page');
+    $this->assertNoLinkByHref('admin/structure/panelizer/edit/node__page__default');
     $this->assertRaw('<div id="field-display-overview-wrapper">');
   }
 
@@ -140,7 +130,6 @@ class PanelizerNodeFunctionalTest extends BrowserTestBase {
    * Tests rendering a node with Panelizer default.
    */
   public function testPanelizerDefault() {
-    $this->panelize('page', NULL, ['panelizer[custom]' => TRUE]);
     /** @var \Drupal\panelizer\PanelizerInterface $panelizer */
     $panelizer = $this->container->get('panelizer');
     $displays = $panelizer->getDefaultPanelsDisplays('node', 'page', 'default');

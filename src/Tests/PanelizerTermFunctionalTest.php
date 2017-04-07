@@ -1,32 +1,36 @@
 <?php
 
-namespace Drupal\panelizer\Tests;
+namespace Drupal\Tests\panelizer\Functional;
 
-use Drupal\simpletest\WebTestBase;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\Tests\BrowserTestBase;
 
 /**
  * Basic functional tests of using Panelizer with taxonomy terms.
  *
  * @group panelizer
  */
-class PanelizerTermFunctionalTest extends WebTestBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  protected $profile = 'standard';
+class PanelizerTermFunctionalTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
    */
   public static $modules = [
-    // Dependencies.
-    'ctools',
-    'ctools_block',
+    // Modules for core functionality.
+    'field',
+    'field_ui',
+    'taxonomy',
+    'user',
+
+    // Core dependencies.
     'layout_discovery',
+
+    // Contrib dependencies.
+    'ctools',
     'panels',
     'panels_ipe',
+
     // This module.
     'panelizer',
     'panelizer_test',
@@ -37,6 +41,11 @@ class PanelizerTermFunctionalTest extends WebTestBase {
    */
   protected function setUp() {
     parent::setUp();
+
+    Vocabulary::create([
+      'vid' => 'tags',
+      'name' => 'Tags',
+    ])->save();
 
     $user = $this->drupalCreateUser([
       'administer taxonomy',
