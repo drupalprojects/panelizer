@@ -194,4 +194,7 @@ class PanelizerNodeTranslationsTest extends ContentTranslationTestBase {
     $this->assertText('Not translated');
   }
 
+  // @todo Confirm that the different languages of a translated node are loaded properly when using a default display.
+  // @todo Decide what should happen if a node is translated and has a customized display.
+  // @todo Confirm loading a referenced block uses the block's correct language.
 }

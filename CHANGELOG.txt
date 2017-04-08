@@ -9,6 +9,7 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
   installation profile, move PanelizerAddDefaultLinkTest to functional tests.
 #2699085 by tim.plunkett: Lock PanelsIPE when a user has made TempStore changes.
 #2867819 by DamienMcKenna: Cloned NodeFunctionalTests to focus on translations.
+By DamienMcKenna: Noting some translation todos.
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04
