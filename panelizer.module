@@ -242,7 +242,7 @@ function panelizer_form_entity_view_display_edit_form_alter(&$form, FormStateInt
       '#title' => t('Allow users to select which display to use'),
       '#description' => t('When multiple default displays are available for a view mode it can be useful to allow content creators to choose which display to use for an individual @entity.', [
         '@entity' => $entity_type->getSingularLabel(),
-      ]),
+      ]) . '<br />' . t('To enable the choice to be enabled by users, make sure the panelizer field is visible in the Manage form display'),
       '#default_value' => isset($settings['allow']) ? $settings['allow'] : FALSE,
     ];
 
