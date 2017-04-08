@@ -14,9 +14,13 @@ trait PanelizerTestTrait {
    */
   protected function loginUser1() {
     // Log in as user 1.
+    /* @var \Drupal\user\Entity\User $account */
     $account = User::load(1);
-    $account->setPassword('foo')->save();
-    $account->passRaw = 'foo';
+    $password = 'foo';
+    $account->setPassword($password)->save();
+    // Support old and new tests.
+    $account->passRaw = $password;
+    $account->pass_raw = $password;
     $this->drupalLogin($account);
   }
 

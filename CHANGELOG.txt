@@ -7,6 +7,7 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
   should only allow for custom overrides.
 #2867503 by DamienMcKenna, phenaproxima: Change tests to not use the "standard"
   installation profile, move PanelizerAddDefaultLinkTest to functional tests.
+#2867819 by DamienMcKenna: Cloned NodeFunctionalTests to focus on translations.
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04
