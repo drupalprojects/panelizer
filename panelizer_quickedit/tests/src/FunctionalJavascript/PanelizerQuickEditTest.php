@@ -9,7 +9,7 @@ use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
 /**
  * Tests that a Panelized Node can be Quick-Edited.
  *
- * @group panelizer_quickedit
+ * @group panelizer
  */
 class PanelizerQuickEditTest extends JavascriptTestBase {
 

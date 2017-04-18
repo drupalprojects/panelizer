@@ -8,7 +8,7 @@ use Drupal\Tests\panels_ipe\FunctionalJavascript\PanelsIPETestBase;
 /**
  * Tests the JavaScript functionality of Panels IPE with Panelizer.
  *
- * @group panels
+ * @group panelizer
  */
 class PanelizerIntegrationTest extends PanelsIPETestBase {
 

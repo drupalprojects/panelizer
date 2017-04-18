@@ -12,6 +12,7 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
 By japerry: Make it clear to the site builder that they can select defaults by
   adding the panelizer field.
 By DamienMcKenna: Noting some translation todos.
+#2870719 by DamienMcKenna: Moved all tests to the 'panelizer' test group.
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04
