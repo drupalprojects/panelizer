@@ -11,6 +11,10 @@
  */
 
 /**
+ * Implementations of hook_post_update_NAME().
+ */
+
+/**
  * Rename layout machine names in config entities to match layout discovery's
  * default layouts.
  */
