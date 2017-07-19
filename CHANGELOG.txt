@@ -1,5 +1,6 @@
 Panelizer 8.x-4.x-dev, xxxx-xx-xx
 ---------------------------------
+#2889815 by samuel.mortenson: Fix tests for Panelizer 8.x.
 
 
 Panelizer 8.x-4.0, 2017-04-28
