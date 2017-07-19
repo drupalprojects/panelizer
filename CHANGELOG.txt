@@ -1,5 +1,17 @@
 Panelizer 8.x-4.x-dev, xxxx-xx-xx
 ---------------------------------
+
+
+Panelizer 8.x-4.0, 2017-04-28
+-----------------------------
+By DamienMcKenna: Identify hook_post_update_NAME().
+#2871157 by tim.plunkett, carstenG, samerali:
+  panelizer_post_update_rename_layout_machine_names() does not work.
+#2677924 by maxneaga: 'Revert to default' needs a confirmation.
+
+
+Panelizer 8.x-4.0-beta3, 2017-04-18
+-----------------------------------
 #2867568 by japerry: Update hook to fix layout machine names.
 #2866705 by japerry: Add handling for revision support when saving custom
   panelizer layouts.
@@ -13,7 +25,6 @@ By japerry: Make it clear to the site builder that they can select defaults by
   adding the panelizer field.
 By DamienMcKenna: Noting some translation todos.
 #2870719 by DamienMcKenna: Moved all tests to the 'panelizer' test group.
-By DamienMcKenna: Identify hook_post_update_NAME().
 
 
 Panelizer 8.x-4.0-beta2, 2017-04-04
