@@ -4,6 +4,8 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
 #2889810 by douggreen: Standardize test group as "panelizer". Fix
   PanelizerLayoutIDUpdateTest group.
 #2908917 by phenaproxima: SaveTabView assumes a Revert tab exists.
+#2899910 by DamienMcKenna, anshuljain2k8: Fixed naming convention for info file
+  dependencies.
 
 
 Panelizer 8.x-4.0, 2017-04-28
