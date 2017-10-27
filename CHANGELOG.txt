@@ -6,6 +6,7 @@ Panelizer 8.x-4.x-dev, xxxx-xx-xx
 #2908917 by phenaproxima: SaveTabView assumes a Revert tab exists.
 #2899910 by DamienMcKenna, anshuljain2k8: Fixed naming convention for info file
   dependencies.
+#2912622 by gaydabura: Panelizer field should only show enabled view modes.
 
 
 Panelizer 8.x-4.0, 2017-04-28
