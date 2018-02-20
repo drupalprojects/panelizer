@@ -48,14 +48,8 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
 
       'access administration pages',
 
-      // Panels IPE.
-      'use panels in place editing',
-
-      // Panelizer.
+      // Panelizer master controls.
       'administer panelizer',
-
-      // Permission to manage the 'content', i.e. the display.
-      'administer panelizer node page content',
     );
     $web_user = $this->drupalCreateUser($perms);
     $this->drupalLogin($web_user);
@@ -74,6 +68,26 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     $this->assertText(t('The settings have been updated.'));
+
+    // Log out the user so a new user can log in.
+    $this->drupalLogout();
+
+    // Create a new user with the new permissions.
+    $perms = array(
+      // Standard node permissions.
+      'create page content',
+      'administer content types',
+      'administer nodes',
+      'bypass node access',
+
+      // Panels IPE.
+      'use panels in place editing',
+
+      // Permission to manage the 'content', i.e. the display.
+      'administer panelizer node page content',
+    );
+    $web_user = $this->drupalCreateUser($perms);
+    $this->drupalLogin($web_user);
 
     // Load the node view page.
     $this->drupalGet('node/' . $node->nid);
@@ -139,16 +153,8 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
       'administer nodes',
       'bypass node access',
 
-      // Panels IPE.
-      'use panels in place editing',
-      // Adds the "Change layout" functionality to IPE.
-      'change layouts in place editing',
-
       // Panelizer.
       'administer panelizer',
-
-      // Permission to modify the layout.
-      'administer panelizer node page layout',
     );
     $web_user = $this->drupalCreateUser($perms);
     $this->drupalLogin($web_user);
@@ -168,6 +174,29 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     $this->assertText(t('The settings have been updated.'));
+
+    // Log out the user so a new user can log in.
+    $this->drupalLogout();
+
+    // Create a new user with the new permissions.
+    $perms = array(
+      // Standard node permissions.
+      'create page content',
+      'administer content types',
+      'administer nodes',
+      'bypass node access',
+
+      // Panels IPE.
+      'use panels in place editing',
+
+      // Adds the "Change layout" functionality to IPE.
+      'change layouts in place editing',
+
+      // Permission to modify the layout.
+      'administer panelizer node page layout',
+    );
+    $web_user = $this->drupalCreateUser($perms);
+    $this->drupalLogin($web_user);
 
     // Load the node view page.
     $this->drupalGet('node/' . $node->nid);
@@ -236,20 +265,15 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
       'administer nodes',
       'bypass node access',
 
-      // Panels IPE.
-      'use panels in place editing',
-
       // Panelizer.
       'administer panelizer',
-
-      // Permission to manage the 'content', i.e. the display.
-      'administer panelizer node page content',
     );
     $web_user = $this->drupalCreateUser($perms);
     $this->drupalLogin($web_user);
 
     // Just 'cause.
     drupal_flush_all_caches();
+
     // Create a test node.
     $node = $this->createNode();
 
@@ -262,6 +286,26 @@ class PanelizerWithPanelsIPE extends PanelizerTestHelper {
     );
     $this->drupalPost(NULL, $edit, t('Save'));
     $this->assertText(t('The settings have been updated.'));
+
+    // Log out the user so a new user can log in.
+    $this->drupalLogout();
+
+    // Create a new user with the new permissions.
+    $perms = array(
+      // Standard node permissions.
+      'create page content',
+      'administer content types',
+      'administer nodes',
+      'bypass node access',
+
+      // Panels IPE.
+      'use panels in place editing',
+
+      // Permission to manage the 'content', i.e. the display.
+      'administer panelizer node page content',
+    );
+    $web_user = $this->drupalCreateUser($perms);
+    $this->drupalLogin($web_user);
 
     // Load the node view page.
     $this->drupalGet('node/' . $node->nid);

@@ -184,7 +184,7 @@ function panelizer_panels_ipe_access($display) {
       // for this bundle.
       if (!empty($entity->panelizer_view_mode)) {
         $view_mode = $entity->panelizer_view_mode;
-        if (!$handler->panelizer_access("layout", $entity, $view_mode) || !$handler->panelizer_access("content", $entity, $view_mode)) {
+        if (!$handler->panelizer_access("layout", $entity, $view_mode) && !$handler->panelizer_access("content", $entity, $view_mode)) {
           return FALSE;
         }
       }
