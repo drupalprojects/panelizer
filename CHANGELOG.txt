@@ -38,6 +38,8 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
   does not work with Panelizer.
 #2866792 by Chris Burge: Revision operation menu paths are only created for last
   view mode.
+#2846011 by nerdcore, DamienMcKenna, jenlampton, azinck: Unable to complete
+  running update hooks after running bad version of panelizer_update_7105().
 
 
 Panelizer 7.x-3.4, 2016-08-19

@@ -505,6 +505,13 @@ function panelizer_update_7105() {
   // Update both of the Panelizer tables.
   foreach (array('panelizer_defaults', 'panelizer_entity') as $table) {
     if (db_field_exists($table, 'view_mode')) {
+      // Update all existing records so they have a valid "view_mode" value.
+      db_update($table)
+        ->fields(array(
+          'view_mode' => 'page_manager',
+        ))
+        ->execute();
+
       // Providing a code path for sites that errored out when running a
       // previous version of this update hook.
       db_change_field($table, 'view_mode', 'view_mode', $spec);
