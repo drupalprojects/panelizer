@@ -184,17 +184,16 @@ function panelizer_add_revision_info_form(&$form, &$form_state) {
       '#access' => $control_revisions,
     );
 
-    if ($control_revisions || $entity->revision) {
-      $form['revision_information']['log'] = array(
-        '#type' => 'textarea',
-        '#title' => t('Log message'),
-        '#description' => t('Provide an explanation of the changes you are making. This will help other authors understand your motivations.'),
-        '#default_value' => $entity->log,
-      );
+    $form['revision_information']['log'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Log message'),
+      '#description' => t('Provide an explanation of the changes you are making. This will help other authors understand your motivations.'),
+      '#default_value' => $entity->log,
+      '#access' => $control_revisions || $entity->revision,
+    );
 
-      if ($control_revisions) {
-        $form['revision_information']['log']['#dependency'] = array('edit-revision' => array(1));
-      }
+    if ($control_revisions) {
+      $form['revision_information']['log']['#dependency'] = array('edit-revision' => array(1));
     }
 
     // Don't override the existing submit, eh?

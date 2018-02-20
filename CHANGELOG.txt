@@ -31,6 +31,7 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
 #2945985 by DamienMcKenna: Remove hardcoded Panels version dependency.
 #2843119 by ctestama: Notice: Undefined index: content in
   PanelizerSearchApiAlterCallback->alterItems().
+#2825786 by joelstein: "Undefined index: log" if user cannot control revisions.
 
 
 Panelizer 7.x-3.4, 2016-08-19
