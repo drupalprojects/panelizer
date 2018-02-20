@@ -2650,14 +2650,22 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
         }
 
         // Locate all displays associated with the entity.
-        $new_dids = db_select('panelizer_entity', 'p')
+        $new_dids_query = db_select('panelizer_entity', 'p')
           ->fields('p', array('did'))
           ->condition('entity_type', $this->entity_type)
-          ->condition('revision_id', $revision_id)
           ->condition('view_mode', $view_modes, 'IN')
-          ->condition('did', '0', '>')
-          ->execute()
-          ->fetchCol();
+          ->condition('did', '0', '>');
+
+        // Not all entity types support revisions.
+        if (!is_null($revision_id)) {
+          $new_dids_query->condition('revision_id', $revision_id);
+        }
+        else {
+          $new_dids_query->condition('entity_id', $entity_id);
+        }
+
+        $new_dids = $new_dids_query->execute()->fetchCol();
+
         if (!empty($new_dids)) {
           $dids = array_merge($dids, $new_dids);
         }
@@ -2670,7 +2678,6 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
         // Delete the {panelizer_entity} records.
         db_delete('panelizer_entity')
           ->condition('entity_type', $this->entity_type)
-          ->condition('revision_id', $revision_id)
           ->condition('view_mode', $view_modes, 'IN')
           ->condition('did', $dids, 'IN')
           ->execute();
