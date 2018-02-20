@@ -472,6 +472,22 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
           if (isset($operation['file path'])) {
             $items[$this->plugin['entity path'] . '/panelizer/' . $view_mode . '/' . $path]['file path'] = $operation['file path'];
           }
+
+          if ($this->supports_revisions) {
+            $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path] = array(
+              'title' => $operation['menu title'],
+              'page arguments' => array($this->entity_type, $path, $position, $view_mode),
+              'access arguments' => array($this->entity_type, 'access', 'admin', $position, $path, $view_mode),
+              'weight' => $weight++,
+            ) + $rev_base;
+
+            if (isset($operation['file'])) {
+              $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path]['file'] = $operation['file'];
+            }
+            if (isset($operation['file path'])) {
+              $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path]['file path'] = $operation['file path'];
+            }
+          }
         }
 
         // Add our special reset item:
@@ -480,22 +496,6 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
           'page arguments' => array($this->entity_type, 'reset', $position, $view_mode),
           'type' => MENU_CALLBACK,
         ) + $base;
-
-        if ($this->supports_revisions) {
-          $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path] = array(
-            'title' => $operation['menu title'],
-            'page arguments' => array($this->entity_type, $path, $position, $view_mode),
-            'access arguments' => array($this->entity_type, 'access', 'admin', $position, $path, $view_mode),
-            'weight' => $weight++,
-          ) + $rev_base;
-
-          if (isset($operation['file'])) {
-            $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path]['file'] = $operation['file'];
-          }
-          if (isset($operation['file path'])) {
-            $items[$this->plugin['entity path'] . '/revisions/%panelizer_node_revision/panelizer/' . $view_mode . '/' . $path]['file path'] = $operation['file path'];
-          }
-        }
 
         // Make the 'content' URLs the local default tasks.
         $items[$this->plugin['entity path'] . '/panelizer/' . $view_mode . '/content']['type'] = MENU_DEFAULT_LOCAL_TASK;

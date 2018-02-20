@@ -54,13 +54,17 @@ class PanelizerNodeRevisionTest extends PanelizerTestHelper {
     $this->assertResponse(200);
     $this->assertLink(t('Disable'));
 
-    // Panelize "Basic page" content type and the 'page_manager' display, give
-    // it a default display and allow multiple displays.
-    $edit = array();
-    $edit['panelizer[status]'] = TRUE;
-    $edit['panelizer[view modes][page_manager][status]'] = TRUE;
-    $edit['panelizer[view modes][page_manager][default]'] = TRUE;
-    $edit['panelizer[view modes][page_manager][choice]'] = TRUE;
+    // Panelize "Basic page" content type and the 'page_manager' & 'teaser'
+    // displays, give them a default display and allow multiple displays.
+    $edit = array(
+      'panelizer[status]' => TRUE,
+      'panelizer[view modes][page_manager][status]' => TRUE,
+      'panelizer[view modes][page_manager][default]' => TRUE,
+      'panelizer[view modes][page_manager][choice]' => TRUE,
+      'panelizer[view modes][teaser][status]' => TRUE,
+      'panelizer[view modes][teaser][default]' => TRUE,
+      'panelizer[view modes][teaser][choice]' => TRUE,
+    );
     $this->drupalPost('admin/structure/types/manage/page', $edit, t('Save content type'));
     $this->assertResponse(200);
 

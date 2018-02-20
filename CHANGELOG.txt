@@ -36,6 +36,8 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
   display functionality broken for entities without revisions.
 #2833086 by junaidpv, DamienMcKenna: Panel's "From pane" option of "Title type"
   does not work with Panelizer.
+#2866792 by Chris Burge: Revision operation menu paths are only created for last
+  view mode.
 
 
 Panelizer 7.x-3.4, 2016-08-19
