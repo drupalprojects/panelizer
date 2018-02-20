@@ -29,6 +29,8 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
 #2880214 by Chris Burge: PanelizerEntityNode::entity_save does not clear page
   cache.
 #2945985 by DamienMcKenna: Remove hardcoded Panels version dependency.
+#2843119 by ctestama: Notice: Undefined index: content in
+  PanelizerSearchApiAlterCallback->alterItems().
 
 
 Panelizer 7.x-3.4, 2016-08-19
