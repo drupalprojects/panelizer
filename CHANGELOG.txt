@@ -34,6 +34,8 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
 #2825786 by joelstein: "Undefined index: log" if user cannot control revisions.
 #2783711 by dmsmidt, drupalstrap, zserno, muntjac, coenvanvliet, b_sharpe: Reset
   display functionality broken for entities without revisions.
+#2833086 by junaidpv, DamienMcKenna: Panel's "From pane" option of "Title type"
+  does not work with Panelizer.
 
 
 Panelizer 7.x-3.4, 2016-08-19

@@ -3459,10 +3459,13 @@ abstract class PanelizerEntityDefault implements PanelizerEntityInterface {
     $renderer->address = $address;
 
     $info = array(
-      'title' => $panelizer->display->get_title(),
       'content' => panels_render_display($display, $renderer),
       'no_blocks' => !empty($panelizer->no_blocks),
     );
+
+    // Wait until the display is rendered above before trying to obtain the
+    // title, this way the title "From pane" option will work.
+    $info['title'] = $panelizer->display->get_title();
 
     $info['classes_array'] = array();
 
