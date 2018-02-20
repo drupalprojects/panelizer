@@ -26,6 +26,12 @@ class PanelizerEntityNode extends PanelizerEntityDefault {
    */
   public function entity_save($entity) {
     node_save($entity);
+
+    // Clear page cache. This replaces the need for cache_clear_all() which is
+    // normally called by node_form_submit().
+    $internal_path = entity_uri('node', $entity);
+    $url = url($internal_path['path'],  array('absolute' => TRUE));
+    cache_clear_all($url, 'cache_page');
   }
 
   public function entity_identifier($entity) {

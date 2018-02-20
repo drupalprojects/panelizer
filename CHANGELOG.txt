@@ -26,6 +26,8 @@ By DamienMcKenna: Fixed incorrect t() usage in panelizer_update_7305().
 #2823912 by cboyden: Fixed IPE permissions.
 #2854655 by DamienMcKenna: Added files for controlling the codeclimate testing
   system.
+#2880214 by Chris Burge: PanelizerEntityNode::entity_save does not clear page
+  cache.
 
 
 Panelizer 7.x-3.4, 2016-08-19
